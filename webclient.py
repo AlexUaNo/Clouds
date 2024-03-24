@@ -8,11 +8,11 @@
 import socket
 import argparse
 
-def http_get_request(server_host, server_port, path):
+def http_get_request(serverHost, serverPort, path):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)           # Creates a TCP socket
-    client_socket.connect((server_host, server_port))                           # Connects to the server
+    client_socket.connect((serverHost, serverPort))                           # Connects to the server
     
-    request = "GET " + path + " HTTP/1.1\r\nHost: " + server_host + "\r\n\r\n"             # Sends HTTP GET request
+    request = "GET " + path + " HTTP/1.1\r\nHost: " + serverHost + "\r\n\r\n"             # Sends HTTP GET request
     client_socket.sendall(request.encode())
     
     response = client_socket.recv(4096).decode()                                # Receives and display server response
@@ -24,13 +24,13 @@ def main():
     parser = argparse.ArgumentParser(description="Simple HTTP client")               # Creates ArgumentParser object
     
     # Add arguments host, port and path
-    parser.add_argument("server_host", type=str, help="Server IP address")
-    parser.add_argument("server_port", type=int, help="Server port")
+    parser.add_argument("serverHost", type=str, help="Server IP address")
+    parser.add_argument("serverPort", type=int, help="Server port")
     parser.add_argument("path", type=str, help="Path to the requested object")
     
     args = parser.parse_args()                                                           # Parse command-line arguments
     
-    http_get_request(args.server_host, args.server_port, args.path)                     # Calls function to send HTTP GET request
+    http_get_request(args.serverHost, args.serverPort, args.path)                     # Calls function to send HTTP GET request
 
 if __name__ == "__main__":
     main()
