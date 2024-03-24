@@ -12,7 +12,8 @@ def http_get_request(serverHost, serverPort, path):
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)           # Creates a TCP socket
     client_socket.connect((serverHost, serverPort))                           # Connects to the server
     
-    request = "GET " + path + " HTTP/1.1\r\nHost: " + serverHost + "\r\n\r\n"             # Sends HTTP GET request
+    request = "GET " + path + " HTTP/1.1\r\nHost: " + serverHost + ":" + str(serverPort) + "\r\n\r\n"             # Sends HTTP GET request
+    print(request)
     client_socket.sendall(request.encode())
     
     response = client_socket.recv(4096).decode()                                # Receives and display server response
@@ -34,3 +35,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    

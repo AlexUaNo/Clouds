@@ -7,8 +7,8 @@
 
 from socket import *                # import socket module from socket
 import sys                          # In order to terminate the program. 
+import os
 # To get access to some variables used/maintained by the Python interpreter, and functions that interact closely with the interpreter.To pass values from cmd.
-
 
 serverSocket = socket(AF_INET, SOCK_STREAM)
 
@@ -25,16 +25,27 @@ while True:                                                 	# Establish the con
     connectionSocket, addr = serverSocket.accept()              # Server waits on accept() for onnections
     print('Got connection from', addr)
 
-    try:                                                    # To encapsulate the code responsible for handling the HTTP request, reading the requested file, and sending the response.
-        message = connectionSocket.recv(1024).decode()      # Read data from the client and print 
-        filename = message.split()[1]                       # parses each line in the file to extract content                      
-        f = open(filename[1:])
-        outputdata = f.read() 
-        connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n".encode())        # Send one HTTP header line into socket
-        
-        for i in range(0, len(outputdata)):
-            connectionSocket.send(outputdata[i].encode())               # Send the requested file's content to the client 
-        connectionSocket.send("\r\n".encode())
+    try:                                                        # To encapsulate the code responsible for handling the HTTP request, reading the requested file, and sending the response.
+        message = connectionSocket.recv(1024).decode()          # Read data from the client and print 
+        print("the message is: " + message)
+        print(message.split())
+        if len(message) > 0:
+            filename = message.split()[1]                       # parses each line in the file to extract content                      
+            
+            # connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n".encode())        # Send one HTTP header line into socket
+            if os.path.isfile(filename[1:]):
+                f = open(filename[1:],'rb')
+                data = f.read() 
+                outputdata = "HTTP/1.1 200 OK\r\n\r\n" + data
+                print(outputdata)
+                print(len(outputdata))
+            else:
+                outputdata = "HTTP/1.1 404 Not Found\r\n\r\nFile Not Found"
+            connectionSocket.sendall(outputdata.encode())
+                # for i in range(0, len(outputdata)):
+                #     print(outputdata[i])
+                #     connectionSocket.send(outputdata[i].encode())               # Send the requested file's content to the client 
+                # connectionSocket.send("\r\n".encode())
         connectionSocket.close()                                        # The connection is closed at the end.
     
     except IOError:             # In case of error (e.g., the file not being found), the server sends a "404 Not Found" message to the client.                             
