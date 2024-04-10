@@ -58,11 +58,15 @@ Exceptions: Any exceptions raised during socket operations are handled by closin
 2) main()
 
 Handles command-line arguments and calls the `http_get_request()` function.
+
 Parameters: None
+
 Returns: None
+
 Exceptions: None handled within this function.
 
 Usage
+
 To use this script, run it from the command line with the following arguments: python3 webserver.py 127.0.0.1 8080 /index.html
 
 
