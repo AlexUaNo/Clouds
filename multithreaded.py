@@ -1,3 +1,6 @@
+# Obligatory Assignment 2: Develop and test a web server
+# DATA2410: Networking and Cloud Computing (Spring 2024)
+
 # Task 3: Making a multi-threaded web server
 
 # Currently, your web server handles only one HTTP request at a time.
@@ -8,17 +11,29 @@
 
 # Here, it is important to create a separate thread for each client connection.
 
-import socket
-import threading
+import socket                                               # For network programming: particularly, for creating and interacting with network sockets. 
+import threading                                            # For executation of the multiple threads concurrently within a single process.
 
-def manage_client(client_socket):                            # The function: 1) processes the client's request, 2) sends the response, 3) runs in a separate thread for each client connection.
+def manage_client(client_socket):                            # A client handler function, which: 1) processes the client's request, 2) sends the response, 3) runs in a separate thread for each client connection.
     request = client_socket.recv(4096).decode()              # the recv() method for receiving the client's data, which should be no more than 4096 bytes.
                                                              # decode() converts the received bytes into a string. Assigning the decoded string to the variable "request". 
                                                              # So, "request" will contain the data sent by the client, in string format. 
+    
+    # To parse and process requested data, to prepare response, and send it to client socket.
+    # Currently I have a "dummy" logic. Any call to server side from client returns simple HTMPL page. 
+    
+    # The variable "response" holds the HTTP response that the server generates based on the client's request. Further, it is sent back to the client.
+    response = "HTTP/1.1 200 OK\r\n\r\n" + """<!DOCTYPE html>                
+    <html>
+        <body>
+            <p> Clouds are there... clouds are here... clouds are everywhere...</p>
+        </body>
+    </html>""" 
+    
     client_socket.send(response.encode())                                       # Send the HTTP response back to the client
     client_socket.close()                                                       # Close the client socket
 
-def main():
+def main():                                 # Creates a server socket, waits for new connections, and initiates a new thread for each new incoming connection.
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)           # Creates a TCP socket object (server_socket) using the 'socket' module 
                                                                                 # 'socket.socket' refers to the socket class within the socket module.  
                                                                                 # The used arguments are: the address family (AF_INET) and the socket type (SOCK_STREAM). 
@@ -30,6 +45,10 @@ def main():
                                                                                 # In addition, up to 5 queued connections can be waiting to be accepted by the server.
     print('Server is listening on port 8080...')
     
+    
+    # The while-loop continuously monitors for incoming client connections and creates a separate thread to manage each connection. 
+    # This enables the server to process multiple clients simultaneously. 
+    # The loop continues to execute indefinitely until it is manually terminated or encounters an error.
     while True:
         client_socket, addr = server_socket.accept()                            # Accept a new client connection.
         print(f'Connection from {addr}')                                        # To print a message that a connection has been established with a client: 
@@ -43,5 +62,5 @@ def main():
                                                                                 # Generally speaking, executaion of 'manage_client' can be done in a separate thread, while the main thread is executing its tasks.
         client_thread.start()                               # Starts execution of the new thread, which was created above. 
                                                             # So, the program will handle multiple clients simultaneously, each in their own separate thread.
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__":                      # It ensures that the main() function is executed, when the script runs directly as the main program.
+    main()                                      # when *(_name__ == "__main__"), the above mentioned main() function is called.
