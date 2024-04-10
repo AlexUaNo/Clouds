@@ -45,15 +45,19 @@ This simple HTTP client script sends an HTTP GET request to a specified server a
 
 Functions
 1) http_get_request(serverHost, serverPort, path)
-Description: Sends an HTTP GET request to the specified server and retrieves the response.
+   
+Sends an HTTP GET request to the specified server and retrieves the response.
+
 Parameters:
   `serverHost` (str): The IP address or hostname of the server.
   `serverPort` (int): The port number of the server.
   `path` (str): The path to the requested object on the server.
 Returns: None
 Exceptions: Any exceptions raised during socket operations are handled by closing the socket gracefully.
+
 2) main()
-Description: Handles command-line arguments and calls the `http_get_request()` function.
+
+Handles command-line arguments and calls the `http_get_request()` function.
 Parameters: None
 Returns: None
 Exceptions: None handled within this function.
