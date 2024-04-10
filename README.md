@@ -55,12 +55,9 @@ Returns: None
 Exceptions: Any exceptions raised during socket operations are handled by closing the socket gracefully.
 
 2) main()  : 
-Handles command-line arguments and calls the `http_get_request()` function.
-
-Parameters: None
-
-Returns: None
-
+Handles command-line arguments and calls the `http_get_request()` function.   
+Parameters: None    
+Returns: None    
 Exceptions: None handled within this function.
 
 Usage:  
