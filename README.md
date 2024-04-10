@@ -44,8 +44,7 @@ How Functions Are Used
 This simple HTTP client script sends an HTTP GET request to a specified server and retrieves the response.
 
 Functions
-1) http_get_request(serverHost, serverPort, path)
-   
+1) http_get_request(serverHost, serverPort, path)  :     
 Sends an HTTP GET request to the specified server and retrieves the response.
 
 Parameters:
@@ -55,8 +54,7 @@ Parameters:
 Returns: None
 Exceptions: Any exceptions raised during socket operations are handled by closing the socket gracefully.
 
-2) main()
-
+2) main()  : 
 Handles command-line arguments and calls the `http_get_request()` function.
 
 Parameters: None
@@ -65,8 +63,7 @@ Returns: None
 
 Exceptions: None handled within this function.
 
-Usage
-
+Usage:  
 To use this script, run it from the command line with the following arguments: python3 webserver.py 127.0.0.1 8080 /index.html
 
 
