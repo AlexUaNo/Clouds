@@ -1,4 +1,4 @@
-DATA2410: Networking and Cloud Computing (Spring 2024
+DATA2410: Networking and Cloud Computing (Spring 2024)
 
 Assignment 2: Develop and test a web server
 
@@ -47,11 +47,11 @@ Functions
 1) http_get_request(serverHost, serverPort, path)  :     
 Sends an HTTP GET request to the specified server and retrieves the response.
 
-Parameters:
-  `serverHost` (str): The IP address or hostname of the server.
-  `serverPort` (int): The port number of the server.
-  `path` (str): The path to the requested object on the server.
-Returns: None
+Parameters:   
+  `serverHost` (str): The IP address or hostname of the server.     
+  `serverPort` (int): The port number of the server.    
+  `path` (str): The path to the requested object on the server.     
+Returns: None   
 Exceptions: Any exceptions raised during socket operations are handled by closing the socket gracefully.
 
 2) main()  : 
