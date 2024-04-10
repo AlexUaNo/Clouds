@@ -1,5 +1,5 @@
-# Obligatory Assignment 2: Develop and test a web server
-# DATA2410: Networking and Cloud Computing (Spring 2024)
+DATA2410: Networking and Cloud Computing (Spring 2024)
+Assignment 2: Develop and test a web server
 
 # Task 1: Simple HTTP Server
 Overview
