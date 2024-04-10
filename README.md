@@ -44,8 +44,7 @@ How Functions Are Used
 This simple HTTP client script sends an HTTP GET request to a specified server and retrieves the response.
 
 Functions
-1) http_get_request(serverHost, serverPort, path)  :     
-Sends an HTTP GET request to the specified server and retrieves the response.
+1) http_get_request(serverHost, serverPort, path)  :  Sends an HTTP GET request to the specified server and retrieves the response.
 
 Parameters:   
   `serverHost` (str): The IP address or hostname of the server.     
