@@ -1,4 +1,5 @@
-DATA2410: Networking and Cloud Computing (Spring 2024)
+DATA2410: Networking and Cloud Computing (Spring 2024
+
 Assignment 2: Develop and test a web server
 
 # Task 1: Simple HTTP Server
@@ -18,6 +19,7 @@ Variables
 - `outputdata`: HTTP response to be sent to the client.
 
 Functions
+
 Main Function
 `while True:`
 - Functionality: Accepts incoming connections and handles client requests.
@@ -27,6 +29,7 @@ Main Function
 - Exception Handling: Catches IOError when the requested file is not found and sends a "404 Not Found" response to the client.
 
 Exception Handling
+
 - Functionality: Handles exceptions that may occur during the execution of the server.
 - Inputs: None
 - Outputs: None
