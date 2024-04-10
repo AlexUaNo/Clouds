@@ -67,7 +67,7 @@ To use this script, run it from the command line with the following arguments: p
 This is an HTTP server implemented in Python using sockets and threading. 
 It listens for incoming connections on port 8080, processes client requests, and sends back a basic HTML response.
 
-Dependencies: Python 3.x
+Dependencies: Python 3.x    
 Installation: No installation is required, except of Python 3.x.
 
 Functions
